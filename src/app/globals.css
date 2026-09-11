@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-rule;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-rust text-paper;
+  }
+
+  /* Thin, print-like scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e9e3d7;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #b9ae9b;
+    border: 3px solid #e9e3d7;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #be4218;
+  }
+}
+
+@layer components {
+  /* ---- Typography ---- */
+  .display {
+    @apply font-display font-extrabold uppercase leading-[0.9] tracking-tightest;
+  }
+
+  .label {
+    @apply font-mono text-[10px] uppercase tracking-label text-ink-faint;
+  }
+
+  .rule-label {
+    @apply flex items-baseline gap-3 font-mono text-[10px] uppercase tracking-label text-ink-faint;
+  }
+
+  .measure {
+    @apply max-w-reading text-[15px] leading-[1.75] text-ink-soft;
+  }
+
+  /* ---- Paper texture: fibrous grain instead of glass blur ---- */
+  .paper-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.32;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
+  /* ---- Ruled notebook / ledger backdrop ---- */
+  .ledger-lines {
+    background-image: linear-gradient(
+      to bottom,
+      rgba(21, 18, 14, 0.055) 1px,
+      transparent 1px
+    );
+    background-size: 100% 34px;
+  }
+
+  .column-rules {
+    background-image: linear-gradient(
+      to right,
+      rgba(21, 18, 14, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 25% 100%;
+  }
+
+  /* ---- Hard-edged print block, the anti-glass card ---- */
+  .print-block {
+    @apply border border-ink bg-paper-card;
+    box-shadow: 6px 6px 0 0 rgba(21, 18, 14, 0.9);
+  }
+
+  .print-block-soft {
+    @apply border border-rule bg-paper-card;
+  }
+
+  .stamp {
+    @apply inline-flex items-center border border-rust px-2 py-[3px] font-mono text-[10px] uppercase tracking-label text-rust;
+  }
+
+  /* ---- Links: editorial underline that fills on hover ---- */
+  .ink-link {
+    @apply relative inline-block text-ink no-underline;
+  }
+  .ink-link::after {
+    content: "";
+    @apply absolute -bottom-px left-0 h-px w-full bg-ink/35 transition-all duration-300;
+  }
+  .ink-link:hover::after {
+    @apply h-full bg-rust/12;
+  }
+  .ink-link:hover {
+    @apply text-rust;
+  }
+
+  /* ---- Scroll reveal (IntersectionObserver driven) ---- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal-rule {
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal-rule.is-visible {
+    transform: scaleX(1);
+  }
+
+  /* ---- Marquee / ticker tape ---- */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker var(--ticker-duration, 44s) linear infinite;
+  }
+  .ticker-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 6%,
+      black 94%,
+      transparent
+    );
+  }
+  .group\/ticker:hover .ticker-track {
+    animation-play-state: paused;
+  }
+
+  /* ---- Diagonal hatch fill for accent panels ---- */
+  .hatch {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(190, 66, 24, 0.16) 0,
+      rgba(190, 66, 24, 0.16) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+  }
+
+  .hatch-ink {
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(21, 18, 14, 0.13) 0,
+      rgba(21, 18, 14, 0.13) 1px,
+      transparent 1px,
+      transparent 7px
+    );
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .vertical-rl {
+    writing-mode: vertical-rl;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Without JavaScript the reveal classes never get `is-visible`, so opt them
+   out entirely rather than leaving the page blank. */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-rule {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-rule {
+    transform: scaleX(1);
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .print-block {
+    box-shadow: none !important;
+  }
+}
