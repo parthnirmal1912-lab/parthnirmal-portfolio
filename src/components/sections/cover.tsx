@@ -99,22 +99,24 @@ export function Cover() {
                 <span className="font-mono text-[10px] tabular text-rust">00</span>
               </div>
 
-              <div className="flex items-center gap-4 border-b border-rule px-4 py-4">
-                <div className="min-w-0 flex-1">
-                  <p className="display text-base leading-none">{profile.shortName}</p>
-                  <p className="mt-1.5 font-mono text-[9.5px] uppercase tracking-label text-ink-faint">
+              <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-rule bg-paper-deep">
+                <Image
+                  src="/avatar.jpg"
+                  alt={profile.name}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 420px, 100vw"
+                  className="object-cover object-top"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/50 to-transparent"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <p className="display text-xl leading-none text-paper">{profile.shortName}</p>
+                  <p className="mt-2 font-mono text-[9.5px] uppercase tracking-label text-rust-glow">
                     {profile.role}
                   </p>
-                </div>
-                <div className="relative size-28 shrink-0 overflow-hidden border border-rule bg-paper-deep sm:size-32">
-                  <Image
-                    src="/avatar.jpg"
-                    alt={profile.name}
-                    fill
-                    priority
-                    sizes="128px"
-                    className="object-cover object-top"
-                  />
                 </div>
               </div>
 
