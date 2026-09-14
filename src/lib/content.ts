@@ -31,7 +31,7 @@ export const profile = {
     "leaders act on.",
   ],
   standfirst:
-    "Graduate student in Business Analytics and Information Management at Purdue, with hands-on experience transforming complex datasets into executive-ready insights. Currently quantifying member value across a 93-pharmacy network on a Kearney industry practicum.",
+    "Graduate student in Business Analytics and Information Management at Purdue, with hands-on experience transforming complex datasets into executive-ready insights. Most recently, completed a Kearney industry practicum quantifying member value across a 93-pharmacy network.",
   profileBody: [
     "I am a graduate student in Business Analytics and Information Management with hands-on experience transforming complex datasets into executive-ready insights, seeking a Product, Project, or Program Management internship in a fast-paced, technology-driven environment.",
     "Highly goal-oriented and motivated, with a passion for delivering innovative ideas and fresh concepts that create value for clients — and a hands-on approach to leveraging AI tools to accelerate analysis and surface insights faster.",
@@ -142,13 +142,12 @@ export const experience: Experience[] = [
     org: "Kearney",
     client: "CARE Pharmacies",
     title: "Industry Practicum — Strategy & Analytics Consultant",
-    period: "January 2026 — Present",
+    period: "January 2026 — May 2026",
     start: "Jan 2026",
-    end: "Present",
+    end: "May 2026",
     location: "West Lafayette, Indiana",
-    current: true,
     summary:
-      "Sizing and standardizing the economics of a 93-pharmacy member network so leadership can prioritize a product roadmap against real numbers rather than anecdotes.",
+      "Sized and standardized the economics of a 93-pharmacy member network so leadership could prioritize a product roadmap against real numbers rather than anecdotes.",
     bullets: [
       {
         lead: "Quantified $33.9M in total annual member value",
