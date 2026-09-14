@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowDownToLine, ArrowUpRight, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { profile, targetRoles } from "@/lib/content";
+import { heroHighlights, profile, targetRoles } from "@/lib/content";
 
 const specs = [
   { k: "Program", v: "MS Business Analytics & Information Management" },
@@ -89,6 +89,20 @@ export function Cover() {
                 </p>
               </div>
             </Reveal>
+
+            <Reveal
+              delay={420}
+              className="mt-9 grid grid-cols-3 gap-4 border-t border-ink/15 pt-6 sm:max-w-md"
+            >
+              {heroHighlights.map((h) => (
+                <div key={h.label}>
+                  <p className="display text-2xl leading-none text-ink">{h.value}</p>
+                  <p className="mt-2 font-mono text-[9px] uppercase leading-tight tracking-label text-ink-faint">
+                    {h.label}
+                  </p>
+                </div>
+              ))}
+            </Reveal>
           </div>
 
           {/* Profile card */}
@@ -99,7 +113,7 @@ export function Cover() {
                 <span className="font-mono text-[10px] tabular text-rust">00</span>
               </div>
 
-              <div className="relative aspect-[4/5] w-full overflow-hidden border-b border-rule bg-paper-deep">
+              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-rule bg-paper-deep">
                 <Image
                   src="/avatar.jpg"
                   alt={profile.name}
