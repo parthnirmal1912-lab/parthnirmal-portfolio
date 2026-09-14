@@ -24,7 +24,10 @@ export const profile = {
   resumeUrl: "/resume/Parth-Nirmal-Resume.pdf",
   graduation: "December 2026",
   school: "Purdue University",
-  headline: "Turning messy data into decisions leaders act on.",
+  headline: {
+    lead: "Complex data in.",
+    emphasis: "Clear decisions out.",
+  },
   standfirst:
     "Graduate student in Business Analytics and Information Management at Purdue, with hands-on experience transforming complex datasets into executive-ready insights. Most recently, completed a Kearney industry practicum quantifying member value across a 93-pharmacy network.",
   profileBody: [

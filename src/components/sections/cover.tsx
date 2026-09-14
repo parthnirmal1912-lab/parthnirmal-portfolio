@@ -31,7 +31,7 @@ export function Cover() {
           </span>
         </Reveal>
 
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+        <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Headline */}
           <div className="lg:col-span-8">
             <Reveal
@@ -45,10 +45,11 @@ export function Cover() {
               </span>
             </Reveal>
 
-            <Reveal delay={140} className="mt-7 block">
-              <p className="max-w-2xl font-sans text-[clamp(1.5rem,3.2vw,2.5rem)] font-medium leading-[1.3] text-ink">
-                {profile.headline}
-              </p>
+            <Reveal delay={140} as="span" className="mt-6 block">
+              <h1 className="display max-w-3xl text-[clamp(1.85rem,4.6vw,3.75rem)]">
+                {profile.headline.lead}{" "}
+                <span className="text-rust">{profile.headline.emphasis}</span>
+              </h1>
             </Reveal>
 
             <Reveal delay={260} className="mt-9 flex flex-wrap items-center gap-2">
@@ -87,22 +88,26 @@ export function Cover() {
                 <span className="font-mono text-[10px] tabular text-rust">00</span>
               </div>
 
-              <div className="relative aspect-[3/4] w-full overflow-hidden border-b border-rule bg-paper-deep">
-                <Image
-                  src="/avatar.jpg"
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 320px, 60vw"
-                  className="object-cover"
-                />
-              </div>
-
-              <div className="border-b border-rule px-4 py-3.5">
-                <p className="display text-lg leading-none">{profile.shortName}</p>
-                <p className="mt-1.5 font-mono text-[10px] uppercase tracking-label text-ink-faint">
-                  {profile.role}
-                </p>
+              <div className="flex items-start gap-4 border-b border-rule px-4 py-4">
+                <div className="min-w-0 flex-1">
+                  <p className="display text-base leading-none">{profile.shortName}</p>
+                  <p className="mt-1.5 font-mono text-[9.5px] uppercase tracking-label text-ink-faint">
+                    {profile.role}
+                  </p>
+                  <p className="mt-3 text-[11.5px] leading-relaxed text-ink-soft">
+                    {profile.standfirst}
+                  </p>
+                </div>
+                <div className="relative size-20 shrink-0 overflow-hidden border border-rule bg-paper-deep sm:size-24">
+                  <Image
+                    src="/avatar.jpg"
+                    alt={profile.name}
+                    fill
+                    priority
+                    sizes="96px"
+                    className="object-cover object-top"
+                  />
+                </div>
               </div>
 
               <dl className="divide-y divide-rule">
@@ -143,8 +148,6 @@ export function Cover() {
                 Download resume
               </a>
             </div>
-
-            <p className="mt-5 measure text-[13px]">{profile.standfirst}</p>
           </Reveal>
         </div>
       </div>
