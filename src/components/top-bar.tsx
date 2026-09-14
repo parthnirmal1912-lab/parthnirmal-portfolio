@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ArrowDownToLine, Menu, X } from "lucide-react";
+import { ArrowDownToLine, Menu, Search, X } from "lucide-react";
 import { profile, sections } from "@/lib/content";
 import { useActiveSection, useScrollProgress } from "@/lib/use-active-section";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,10 @@ const sectionIds = sections.map((s) => s.id);
 
 export function TopBar() {
   const [open, setOpen] = React.useState(false);
+  const [searchOpen, setSearchOpen] = React.useState(false);
+  const [query, setQuery] = React.useState("");
+  const searchRef = React.useRef<HTMLDivElement>(null);
+  const searchInputRef = React.useRef<HTMLInputElement>(null);
   const active = useActiveSection(sectionIds);
   const progress = useScrollProgress();
 
@@ -25,6 +29,32 @@ export function TopBar() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  const closeSearch = React.useCallback(() => {
+    setSearchOpen(false);
+    setQuery("");
+  }, []);
+
+  React.useEffect(() => {
+    if (!searchOpen) return;
+    searchInputRef.current?.focus();
+    const onClick = (e: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(e.target as Node)) {
+        closeSearch();
+      }
+    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeSearch();
+    document.addEventListener("mousedown", onClick);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [searchOpen, closeSearch]);
+
+  const filteredSections = sections.filter((s) =>
+    s.label.toLowerCase().includes(query.toLowerCase()),
+  );
 
   return (
     <>
@@ -60,6 +90,62 @@ export function TopBar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <div ref={searchRef} className="relative">
+              <button
+                type="button"
+                onClick={() => (searchOpen ? closeSearch() : setSearchOpen(true))}
+                aria-label="Jump to a section"
+                aria-expanded={searchOpen}
+                className={cn(
+                  "flex size-9 items-center justify-center border border-ink transition-colors hover:bg-ink hover:text-paper",
+                  searchOpen ? "bg-ink text-paper" : "text-ink",
+                )}
+              >
+                <Search className="size-4" />
+              </button>
+
+              {searchOpen && (
+                <div className="print-block absolute right-0 top-[calc(100%+8px)] w-64 bg-paper-card">
+                  <div className="border-b border-rule px-3 py-2.5">
+                    <input
+                      ref={searchInputRef}
+                      type="text"
+                      value={query}
+                      onChange={(e) => setQuery(e.target.value)}
+                      placeholder="Jump to section&hellip;"
+                      className="w-full bg-transparent font-mono text-[11px] uppercase tracking-label text-ink placeholder:text-ink-faint focus:outline-none"
+                    />
+                  </div>
+                  <ul className="max-h-72 overflow-y-auto">
+                    {filteredSections.length === 0 && (
+                      <li className="px-3 py-3 font-mono text-[11px] uppercase tracking-label text-ink-faint">
+                        No match
+                      </li>
+                    )}
+                    {filteredSections.map((s) => (
+                      <li key={s.id}>
+                        <a
+                          href={`#${s.id}`}
+                          onClick={closeSearch}
+                          className="flex items-baseline gap-3 border-b border-rule px-3 py-2.5 font-mono text-[11px] uppercase tracking-label text-ink-soft transition-colors last:border-b-0 hover:bg-paper-deep hover:text-rust"
+                        >
+                          <span className="tabular text-rust">{s.index}</span>
+                          {s.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <a
+              href="#contact"
+              className="hidden items-center gap-1.5 border border-ink px-3 py-2 font-mono text-[10px] uppercase tracking-label text-ink transition-colors hover:bg-ink hover:text-paper sm:inline-flex"
+            >
+              Contact
+            </a>
+
             <a
               href={profile.resumeUrl}
               download
