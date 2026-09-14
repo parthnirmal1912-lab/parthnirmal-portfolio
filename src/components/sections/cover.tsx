@@ -120,7 +120,7 @@ export function Cover() {
                   fill
                   priority
                   sizes="(min-width: 1024px) 420px, 100vw"
-                  className="object-cover object-top"
+                  className="object-cover object-[center_32%]"
                 />
                 <div
                   aria-hidden
