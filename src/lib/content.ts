@@ -37,13 +37,6 @@ export const profile = {
   ],
 } as const;
 
-/** Compact headline numbers shown in the hero, mirroring the top Impact metrics. */
-export const heroHighlights = [
-  { value: "$33.9M", label: "Member value quantified" },
-  { value: "$870M", label: "Purchasing spend standardized" },
-  { value: "93%", label: "Bankruptcy model accuracy" },
-] as const;
-
 /** Ticker tape strip under the hero. */
 export const tickerItems = [
   "$33.9M member value quantified",
