@@ -10,7 +10,7 @@ export function Footer() {
         <div className="space-y-1.5">
           <p className="display text-lg">{profile.shortName}</p>
           <p className="font-mono text-[10px] uppercase tracking-label text-ink-faint">
-            {profile.location} &middot; Open to Summer 2026 internships
+            {profile.location} &middot; Open to full-time roles — Jan 2027
           </p>
         </div>
 

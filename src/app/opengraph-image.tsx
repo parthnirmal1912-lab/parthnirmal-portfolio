@@ -47,7 +47,7 @@ export default function OpengraphImage() {
               marginBottom: 20,
             }}
           >
-            Purdue BAIM &apos;26 · Available Summer 2026
+            Purdue BAIM &apos;26 · Available January 2027
           </div>
           <div
             style={{

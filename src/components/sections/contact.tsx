@@ -52,7 +52,7 @@ export function Contact() {
                 <span className="text-rust-glow">
                   product, project, or program management
                 </span>{" "}
-                intern who can size the opportunity before building the
+                manager who can size the opportunity before building the
                 roadmap?
               </p>
             </Reveal>
@@ -60,7 +60,7 @@ export function Contact() {
             <Reveal delay={100}>
               <p className="mt-6 max-w-reading text-[14.5px] leading-[1.75] text-paper/65">
                 I am graduating from Purdue in {profile.graduation} and am open
-                to internship and full-time conversations. Happy to walk through
+                to full-time conversations. Happy to walk through
                 any of the analyses above in detail.
               </p>
             </Reveal>

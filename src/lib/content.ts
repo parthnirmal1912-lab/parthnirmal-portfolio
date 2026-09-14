@@ -11,11 +11,11 @@ export const siteUrl = "https://parthnirmal.com";
 
 export const profile = {
   name: "Parth Bipinchandra Nirmal",
-  shortName: "Parth Nirmal",
-  firstName: "Parth",
+  shortName: "Parth Bipinchandra Nirmal",
+  firstName: "Parth Bipinchandra",
   lastName: "Nirmal",
   role: "Business Analytics & Information Management",
-  seeking: "Product / Project / Program Management Internship",
+  seeking: "Product / Project / Program Management — Full-Time",
   location: "Indiana, USA",
   phone: "765-532-7471",
   email: "parthnirmal1912@gmail.com",
@@ -31,7 +31,7 @@ export const profile = {
   standfirst:
     "Graduate student in Business Analytics and Information Management at Purdue, with hands-on experience transforming complex datasets into executive-ready insights. Most recently, completed a Kearney industry practicum quantifying member value across a 93-pharmacy network.",
   profileBody: [
-    "I am a graduate student in Business Analytics and Information Management with hands-on experience transforming complex datasets into executive-ready insights, seeking a Product, Project, or Program Management internship in a fast-paced, technology-driven environment.",
+    "I am a graduate student in Business Analytics and Information Management with hands-on experience transforming complex datasets into executive-ready insights, seeking a Product, Project, or Program Management full-time role in a fast-paced, technology-driven environment.",
     "Highly goal-oriented and motivated, with a passion for delivering innovative ideas and fresh concepts that create value for clients — and a hands-on approach to leveraging AI tools to accelerate analysis and surface insights faster.",
     "Three years of consulting and business analysis across the BFSI and pharmacy sectors taught me the part that matters most: the analysis is only half the job. Framing the problem, validating the data, and landing the story with the people who own the roadmap is the other half.",
   ],

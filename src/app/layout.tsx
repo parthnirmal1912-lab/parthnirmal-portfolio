@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     template: `%s — ${profile.shortName}`,
   },
   description:
-    "Parth Bipinchandra Nirmal — MS Business Analytics and Information Management at Purdue. Strategy and analytics consulting, product requirements, and executive reporting. Seeking a Product, Project, or Program Management internship.",
+    "Parth Bipinchandra Nirmal — MS Business Analytics and Information Management at Purdue. Strategy and analytics consulting, product requirements, and executive reporting. Seeking a Product, Project, or Program Management full-time role.",
   keywords: [
-    "Parth Nirmal",
+    "Parth Bipinchandra Nirmal",
     "Business Analytics",
-    "Product Management Intern",
+    "Product Management",
     "Program Management",
     "Purdue Daniels School of Business",
     "BAIM",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "profile",
     title: `${profile.shortName} — ${profile.role}`,
     description:
-      "Turning messy data into decisions leaders act on. Purdue BAIM '26, seeking Product / Project / Program Management internships.",
+      "Complex data in, clear decisions out. Purdue BAIM '26, seeking Product / Project / Program Management full-time roles.",
     url: siteUrl,
     siteName: profile.shortName,
   },

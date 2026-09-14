@@ -8,7 +8,6 @@ const specs = [
   { k: "School", v: "Purdue University · Daniels School of Business" },
   { k: "Graduating", v: profile.graduation },
   { k: "Based in", v: profile.location },
-  { k: "Seeking", v: profile.seeking },
 ] as const;
 
 export function Cover() {
@@ -41,7 +40,7 @@ export function Cover() {
             >
               <span className="size-1.5 animate-pulse bg-rust" />
               <span className="font-mono text-[10px] uppercase tracking-label text-rust">
-                Available for Summer 2026
+                Available from January 2027
               </span>
             </Reveal>
 
@@ -78,6 +77,18 @@ export function Cover() {
                 See the numbers
               </a>
             </Reveal>
+
+            <Reveal delay={380} className="mt-9 max-w-2xl">
+              <p className="text-[13px] leading-relaxed text-ink-soft">
+                {profile.standfirst}
+              </p>
+              <div className="mt-5">
+                <p className="label text-ink-faint">Seeking</p>
+                <p className="mt-1.5 text-[13px] leading-snug text-ink">
+                  {profile.seeking}
+                </p>
+              </div>
+            </Reveal>
           </div>
 
           {/* Profile card */}
@@ -88,23 +99,20 @@ export function Cover() {
                 <span className="font-mono text-[10px] tabular text-rust">00</span>
               </div>
 
-              <div className="flex items-start gap-4 border-b border-rule px-4 py-4">
+              <div className="flex items-center gap-4 border-b border-rule px-4 py-4">
                 <div className="min-w-0 flex-1">
                   <p className="display text-base leading-none">{profile.shortName}</p>
                   <p className="mt-1.5 font-mono text-[9.5px] uppercase tracking-label text-ink-faint">
                     {profile.role}
                   </p>
-                  <p className="mt-3 text-[11.5px] leading-relaxed text-ink-soft">
-                    {profile.standfirst}
-                  </p>
                 </div>
-                <div className="relative size-20 shrink-0 overflow-hidden border border-rule bg-paper-deep sm:size-24">
+                <div className="relative size-28 shrink-0 overflow-hidden border border-rule bg-paper-deep sm:size-32">
                   <Image
                     src="/avatar.jpg"
                     alt={profile.name}
                     fill
                     priority
-                    sizes="96px"
+                    sizes="128px"
                     className="object-cover object-top"
                   />
                 </div>
