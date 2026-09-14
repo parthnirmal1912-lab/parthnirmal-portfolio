@@ -37,16 +37,11 @@ export const profile = {
   ],
 } as const;
 
-/** Ticker tape strip under the hero. */
-export const tickerItems = [
-  "$33.9M member value quantified",
-  "$870M purchasing spend standardized",
-  "93 member pharmacies",
-  "50+ AML client configurations",
-  "2nd of 44 — Kaggle bankruptcy prediction",
-  "95% on-time Agile delivery",
-  "15+ BRDs & FRDs authored",
-  "20% operational efficiency gain",
+/** Compact headline numbers shown in the hero, mirroring the top Impact metrics. */
+export const heroHighlights = [
+  { value: "$33.9M", label: "Member value quantified" },
+  { value: "$870M", label: "Purchasing spend standardized" },
+  { value: "93%", label: "Bankruptcy model accuracy" },
 ] as const;
 
 export type ImpactMetric = {

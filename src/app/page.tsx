@@ -1,5 +1,4 @@
 import { Cover } from "@/components/sections/cover";
-import { Ticker } from "@/components/ticker";
 import { Profile } from "@/components/sections/profile";
 import { Impact } from "@/components/sections/impact";
 import { Experience } from "@/components/sections/experience";
@@ -44,7 +43,6 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
       <Cover />
-      <Ticker />
       <Profile />
       <Impact />
       <Experience />

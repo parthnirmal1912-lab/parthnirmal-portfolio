@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ArrowDownToLine, ArrowUpRight, Linkedin, Mail } from "lucide-react";
 import { Reveal } from "@/components/reveal";
-import { profile, targetRoles } from "@/lib/content";
+import { heroHighlights, profile, targetRoles } from "@/lib/content";
 
 const specs = [
   { k: "Program", v: "MS Business Analytics & Information Management" },
@@ -89,6 +89,20 @@ export function Cover() {
                 </p>
               </div>
             </Reveal>
+
+            <Reveal
+              delay={420}
+              className="mt-9 grid grid-cols-3 gap-4 border-t border-ink/15 pt-6 sm:max-w-md"
+            >
+              {heroHighlights.map((h) => (
+                <div key={h.label}>
+                  <p className="display text-2xl leading-none text-ink">{h.value}</p>
+                  <p className="mt-2 font-mono text-[9px] uppercase leading-tight tracking-label text-ink-faint">
+                    {h.label}
+                  </p>
+                </div>
+              ))}
+            </Reveal>
           </div>
 
           {/* Profile card */}
@@ -99,24 +113,28 @@ export function Cover() {
                 <span className="font-mono text-[10px] tabular text-rust">00</span>
               </div>
 
-              <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-rule bg-paper-deep">
-                <Image
-                  src="/avatar.jpg"
-                  alt={profile.name}
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 420px, 100vw"
-                  className="object-cover object-[center_32%]"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink via-ink/50 to-transparent"
-                />
-                <div className="absolute inset-x-0 bottom-0 p-4">
-                  <p className="display text-xl leading-none text-paper">{profile.shortName}</p>
-                  <p className="mt-2 font-mono text-[9.5px] uppercase tracking-label text-rust-glow">
-                    {profile.role}
-                  </p>
+              <div className="flex justify-center border-b border-rule px-4 py-6">
+                <div className="relative aspect-[2/3] w-56 overflow-hidden border border-rule bg-paper-deep sm:w-64">
+                  <Image
+                    src="/avatar.jpg"
+                    alt={profile.name}
+                    fill
+                    priority
+                    sizes="256px"
+                    className="object-cover object-center"
+                  />
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink via-ink/55 to-transparent"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-3">
+                    <p className="display text-sm leading-tight text-paper">
+                      {profile.shortName}
+                    </p>
+                    <p className="mt-1.5 font-mono text-[8px] uppercase leading-tight tracking-label text-rust-glow">
+                      {profile.role}
+                    </p>
+                  </div>
                 </div>
               </div>
 
