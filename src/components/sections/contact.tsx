@@ -90,7 +90,7 @@ export function Contact() {
                         : undefined
                     }
                     download={"download" in c && c.download ? true : undefined}
-                    className="group flex items-center justify-between gap-6 border-b border-paper/20 py-6 transition-colors hover:bg-paper hover:px-5 hover:text-ink"
+                    className="group flex items-center justify-between gap-6 border-b border-paper/20 py-6 transition-[background-color,color,padding-left,padding-right] duration-300 hover:bg-paper hover:px-5 hover:text-ink"
                   >
                     <span className="flex min-w-0 flex-col gap-1.5 sm:flex-row sm:items-baseline sm:gap-6">
                       <span className="w-24 shrink-0 font-mono text-[10px] uppercase tracking-label text-rust-glow group-hover:text-rust">

@@ -79,7 +79,7 @@ export default function RootLayout({
         className={`${display.variable} ${sans.variable} ${mono.variable} paper-grain antialiased`}
       >
         <a
-          href="#profile"
+          href="#top"
           className="no-print sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:border focus:border-ink focus:bg-paper focus:px-3 focus:py-2 focus:font-mono focus:text-xs"
         >
           Skip to content

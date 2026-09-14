@@ -24,7 +24,7 @@ export function Impact() {
               delay={i * 70}
               className={cn(
                 "group relative border-b border-r border-paper/15 p-6 transition-colors hover:bg-paper/[0.04] sm:p-7",
-                m.featured && "sm:col-span-2 lg:col-span-1 lg:row-span-1",
+                m.featured && "sm:col-span-2 lg:col-span-1",
               )}
             >
               <p
@@ -52,7 +52,7 @@ export function Impact() {
                 {m.note}
               </p>
 
-              <p className="mt-5 font-mono text-[9.5px] uppercase tracking-label text-paper/40">
+              <p className="mt-5 font-mono text-[9.5px] uppercase tracking-label text-paper/55">
                 {m.source}
               </p>
 
@@ -65,7 +65,7 @@ export function Impact() {
         </div>
 
         <Reveal delay={480}>
-          <p className="mt-8 max-w-reading font-mono text-[10.5px] leading-relaxed uppercase tracking-label text-paper/45">
+          <p className="mt-8 max-w-reading font-mono text-[10.5px] leading-relaxed uppercase tracking-label text-paper/60">
             Figures reflect analyses delivered on client and academic
             engagements. Detail available on request.
           </p>

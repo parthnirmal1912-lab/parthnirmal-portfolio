@@ -23,6 +23,14 @@
     @apply bg-rust text-paper;
   }
 
+  /* Keyboard-only focus ring, on-brand (rust) instead of the browser default. */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid #be4218;
+    outline-offset: 2px;
+  }
+
   /* Thin, print-like scrollbar */
   ::-webkit-scrollbar {
     width: 10px;

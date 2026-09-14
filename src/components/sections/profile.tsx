@@ -67,7 +67,7 @@ export function Profile() {
                     {p.n}
                   </span>
                   <div>
-                    <h3 className="font-display text-[15px] font-bold uppercase tracking-tight">
+                    <h3 className="font-display text-[15px] font-extrabold uppercase tracking-tight">
                       {p.title}
                     </h3>
                     <p className="mt-1.5 text-[13px] leading-relaxed text-ink-soft">

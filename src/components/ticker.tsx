@@ -9,7 +9,10 @@ export function Ticker() {
   const items = [...tickerItems, ...tickerItems];
 
   return (
-    <div className="no-print group/ticker relative overflow-hidden border-y border-ink bg-ink py-3 text-paper">
+    <div
+      aria-hidden="true"
+      className="no-print group/ticker relative overflow-hidden border-y border-ink bg-ink py-3 text-paper"
+    >
       <div className="ticker-mask">
         <div
           className="ticker-track"

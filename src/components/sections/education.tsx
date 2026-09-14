@@ -7,9 +7,10 @@ export function Education() {
     <Section id="education" tone="deep">
       <SectionHead index="06" title="Education" kicker="Purdue / Mumbai" />
 
-      <div className="border-t border-ink">
+      <ul className="border-t border-ink">
         {education.map((e, i) => (
           <Reveal
+            as="li"
             key={e.id}
             delay={i * 100}
             className="group grid gap-6 border-b border-ink py-9 lg:grid-cols-12 lg:items-baseline lg:gap-8 lg:py-11"
@@ -47,7 +48,7 @@ export function Education() {
             </div>
           </Reveal>
         ))}
-      </div>
+      </ul>
     </Section>
   );
 }

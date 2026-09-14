@@ -22,6 +22,7 @@ export function IndexRail() {
             <li key={s.id}>
               <a
                 href={`#${s.id}`}
+                aria-label={s.label}
                 className={cn(
                   "group relative flex h-12 w-12 items-center justify-center transition-colors",
                   isActive ? "bg-ink text-paper" : "text-ink-faint hover:text-ink",

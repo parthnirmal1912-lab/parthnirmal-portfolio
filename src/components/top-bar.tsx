@@ -45,6 +45,7 @@ export function TopBar() {
               <a
                 key={s.id}
                 href={`#${s.id}`}
+                aria-label={s.label}
                 className={cn(
                   "group flex items-center gap-1.5 px-2 py-1.5 font-mono text-[10px] uppercase tracking-label transition-colors",
                   active === s.id

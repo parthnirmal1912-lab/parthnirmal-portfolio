@@ -17,7 +17,7 @@ export function Projects() {
                 <span className="font-mono text-[10px] uppercase tracking-label">
                   {p.kind}
                 </span>
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-label text-paper/60">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-label text-paper/60">
                   <CalendarDays className="size-3" />
                   {p.period}
                 </span>

@@ -18,7 +18,7 @@ const config: Config = {
         ink: {
           DEFAULT: "#15120E",
           soft: "#4C463C",
-          faint: "#8A8275",
+          faint: "#6E6656",
         },
         rule: "#D6CEBF",
         rust: {
