@@ -33,6 +33,17 @@ export function Experience() {
                   )}
                 </div>
 
+                {job.logo && (
+                  <div className="relative mt-3 h-9 w-28 border border-rule bg-paper-card">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={job.logo}
+                      alt={`${job.org} logo`}
+                      className="absolute inset-0 h-full w-full object-contain p-1.5"
+                    />
+                  </div>
+                )}
+
                 <h3 className="mt-3 display text-[clamp(1.5rem,3.4vw,2.25rem)]">
                   {job.org}
                 </h3>

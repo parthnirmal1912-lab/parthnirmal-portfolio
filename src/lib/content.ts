@@ -119,6 +119,7 @@ export type Experience = {
   id: string;
   org: string;
   client?: string;
+  logo?: string;
   title: string;
   period: string;
   start: string;
@@ -135,6 +136,7 @@ export const experience: Experience[] = [
     id: "kearney",
     org: "Kearney",
     client: "CARE Pharmacies",
+    logo: "/logos/kearney.svg",
     title: "Industry Practicum — Strategy & Analytics Consultant",
     period: "January 2026 — May 2026",
     start: "Jan 2026",
@@ -171,6 +173,7 @@ export const experience: Experience[] = [
   {
     id: "tss",
     org: "TSS Consultancy Pvt. Ltd",
+    logo: "/logos/tss-consultancy.png",
     title: "Associate Business Analyst",
     period: "April 2023 — June 2025",
     start: "Apr 2023",
@@ -207,6 +210,7 @@ export const experience: Experience[] = [
   {
     id: "rns",
     org: "RNS Technology Services",
+    logo: "/logos/rns-technology.png",
     title: "Associate Technical Consultant",
     period: "October 2022 — April 2023",
     start: "Oct 2022",
@@ -338,6 +342,7 @@ export type Education = {
   id: string;
   school: string;
   division: string;
+  logo?: string;
   degree: string;
   gpa: string;
   date: string;
@@ -349,6 +354,7 @@ export const education: Education[] = [
   {
     id: "purdue",
     school: "Purdue University",
+    logo: "/logos/purdue.png",
     division: "Daniels School of Business",
     degree: "Master of Science, Business Analytics and Information Management",
     gpa: "3.5 / 4.0",
@@ -359,6 +365,7 @@ export const education: Education[] = [
   {
     id: "mumbai",
     school: "Fr. Conceicao Rodrigues College of Engineering",
+    logo: "/logos/frcrce.png",
     division: "University of Mumbai",
     degree: "Bachelor of Engineering, Electronics",
     gpa: "3.2 / 4.0",

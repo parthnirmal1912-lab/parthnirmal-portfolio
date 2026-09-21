@@ -17,6 +17,16 @@ export function Education() {
           >
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-center gap-3">
+                {e.logo && (
+                  <div className="relative h-9 w-9 shrink-0 border border-rule bg-paper-card">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={e.logo}
+                      alt={`${e.school} logo`}
+                      className="absolute inset-0 h-full w-full object-contain p-1"
+                    />
+                  </div>
+                )}
                 <h3 className="display text-[clamp(1.4rem,3.2vw,2.1rem)]">
                   {e.school}
                 </h3>
