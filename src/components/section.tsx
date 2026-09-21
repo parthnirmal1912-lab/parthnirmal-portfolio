@@ -7,24 +7,37 @@ export function Section({
   children,
   className,
   tone = "paper",
+  noTopBorder = false,
+  noTopPadding = false,
 }: {
   id: string;
   children: React.ReactNode;
   className?: string;
   tone?: "paper" | "deep" | "ink";
+  /** Skip the hairline border normally drawn along the top of every section. */
+  noTopBorder?: boolean;
+  /** Skip the usual top padding, e.g. when the section right above already
+   * provides its own closing spacing and this one should sit flush under it. */
+  noTopPadding?: boolean;
 }) {
   return (
     <section
       id={id}
       className={cn(
-        "relative border-t border-ink",
+        "relative",
+        !noTopBorder && "border-t border-ink",
         tone === "paper" && "bg-paper",
         tone === "deep" && "bg-paper-deep",
         tone === "ink" && "bg-ink text-paper",
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1440px] px-5 py-20 sm:px-8 md:py-28 lg:px-12 xl:pl-24">
+      <div
+        className={cn(
+          "mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-12 xl:pl-24",
+          noTopPadding ? "pb-20 pt-0 md:pb-28" : "py-20 md:py-28",
+        )}
+      >
         {children}
       </div>
     </section>

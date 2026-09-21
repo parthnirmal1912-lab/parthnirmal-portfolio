@@ -27,7 +27,7 @@ const principles = [
 
 export function Profile() {
   return (
-    <Section id="profile">
+    <Section id="profile" noTopBorder noTopPadding>
       <SectionHead index="01" title="Profile" kicker="Who I am / how I work" />
 
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-12">

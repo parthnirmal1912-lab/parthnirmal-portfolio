@@ -19,7 +19,7 @@ export function Cover() {
         className="absolute inset-y-0 right-0 hidden w-1/3 column-rules opacity-60 lg:block"
       />
 
-      <div className="relative mx-auto w-full max-w-[1440px] px-5 pb-16 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pb-24 lg:pt-20 xl:pl-24">
+      <div className="relative mx-auto w-full max-w-[1440px] px-5 pb-8 pt-12 sm:px-8 sm:pt-16 lg:px-12 lg:pb-10 lg:pt-20 xl:pl-24">
         {/* Masthead meta */}
         <Reveal className="flex flex-wrap items-baseline justify-between gap-3 border-b border-ink pb-3">
           <span className="font-mono text-[10px] uppercase tracking-label text-ink-faint">
