@@ -47,7 +47,8 @@ export function Cover() {
             <Reveal delay={140} as="span" className="mt-6 block">
               <h1 className="display max-w-3xl text-[clamp(1.85rem,4.6vw,3.75rem)]">
                 {profile.headline.lead}{" "}
-                <span className="text-rust">{profile.headline.emphasis}</span>
+                <span className="text-rust">{profile.headline.emphasis}</span>{" "}
+                {profile.headline.tail}
               </h1>
             </Reveal>
 

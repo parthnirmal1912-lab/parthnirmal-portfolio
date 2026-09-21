@@ -25,8 +25,9 @@ export const profile = {
   graduation: "December 2026",
   school: "Purdue University",
   headline: {
-    lead: "Complex data in.",
-    emphasis: "Clear decisions out.",
+    lead: "I turn messy data into",
+    emphasis: "decisions,",
+    tail: "leaders act on.",
   },
   standfirst:
     "Graduate student in Business Analytics and Information Management at Purdue, with hands-on experience transforming complex datasets into executive-ready insights. Most recently, completed a Kearney industry practicum quantifying member value across a 93-pharmacy network.",
