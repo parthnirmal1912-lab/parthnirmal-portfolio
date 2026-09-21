@@ -51,18 +51,7 @@ export function Cover() {
               </h1>
             </Reveal>
 
-            <Reveal delay={260} className="mt-9 flex flex-wrap items-center gap-2">
-              {targetRoles.map((role) => (
-                <span
-                  key={role}
-                  className="border border-ink/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-ink-soft"
-                >
-                  {role}
-                </span>
-              ))}
-            </Reveal>
-
-            <Reveal delay={320} className="mt-9 flex flex-wrap items-center gap-3">
+            <Reveal delay={260} className="mt-9 flex flex-wrap items-center gap-3">
               <a
                 href="#contact"
                 className="group inline-flex items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-[11px] uppercase tracking-label text-paper transition-colors hover:border-rust hover:bg-rust"
@@ -78,15 +67,22 @@ export function Cover() {
               </a>
             </Reveal>
 
-            <Reveal delay={380} className="mt-9 max-w-2xl">
+            <Reveal delay={320} className="mt-9 max-w-2xl">
               <p className="text-[13px] leading-relaxed text-ink-soft">
                 {profile.standfirst}
               </p>
               <div className="mt-5">
                 <p className="label text-ink-faint">Seeking</p>
-                <p className="mt-1.5 text-[13px] leading-snug text-ink">
-                  {profile.seeking}
-                </p>
+                <div className="mt-2.5 flex flex-wrap items-center gap-2">
+                  {targetRoles.map((role) => (
+                    <span
+                      key={role}
+                      className="border border-ink/25 px-2.5 py-1 font-mono text-[10px] uppercase tracking-label text-ink-soft"
+                    >
+                      {role}
+                    </span>
+                  ))}
+                </div>
               </div>
             </Reveal>
 
