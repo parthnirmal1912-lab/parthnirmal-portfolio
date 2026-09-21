@@ -34,12 +34,12 @@ export function Experience() {
                 </div>
 
                 {job.logo && (
-                  <div className="relative mt-3 h-9 w-28 border border-rule bg-paper-card">
+                  <div className="print-block-soft relative mt-3 h-16 w-44">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={job.logo}
                       alt={`${job.org} logo`}
-                      className="absolute inset-0 h-full w-full object-contain p-1"
+                      className="absolute inset-0 h-full w-full object-contain p-2"
                     />
                   </div>
                 )}

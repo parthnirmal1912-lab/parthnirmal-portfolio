@@ -18,12 +18,12 @@ export function Education() {
             <div className="lg:col-span-7">
               <div className="flex flex-wrap items-center gap-3">
                 {e.logo && (
-                  <div className="relative h-9 w-9 shrink-0 border border-rule bg-paper-card">
+                  <div className="print-block-soft relative h-16 w-16 shrink-0">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={e.logo}
                       alt={`${e.school} logo`}
-                      className="absolute inset-0 h-full w-full object-contain p-0.5"
+                      className="absolute inset-0 h-full w-full object-contain p-2"
                     />
                   </div>
                 )}
