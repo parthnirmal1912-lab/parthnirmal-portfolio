@@ -39,7 +39,7 @@ export function Experience() {
                     <img
                       src={job.logo}
                       alt={`${job.org} logo`}
-                      className="absolute inset-0 h-full w-full object-contain p-1.5"
+                      className="absolute inset-0 h-full w-full object-contain p-1"
                     />
                   </div>
                 )}

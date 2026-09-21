@@ -23,7 +23,7 @@ export function Education() {
                     <img
                       src={e.logo}
                       alt={`${e.school} logo`}
-                      className="absolute inset-0 h-full w-full object-contain p-1"
+                      className="absolute inset-0 h-full w-full object-contain p-0.5"
                     />
                   </div>
                 )}
@@ -44,17 +44,11 @@ export function Education() {
               </p>
             </div>
 
-            <div className="flex items-baseline justify-between gap-6 lg:col-span-2 lg:flex-col lg:items-end lg:gap-3 lg:text-right">
-              <div className="lg:text-right">
-                <p className="label">GPA</p>
-                <p className="mt-1 display text-xl tabular">{e.gpa}</p>
-              </div>
-              <div className="lg:text-right">
-                <p className="label">Conferred</p>
-                <p className="mt-1 font-mono text-[12px] tabular text-ink">
-                  {e.date}
-                </p>
-              </div>
+            <div className="lg:col-span-2 lg:text-right">
+              <p className="label">Conferred</p>
+              <p className="mt-1 font-mono text-[12px] tabular text-ink">
+                {e.date}
+              </p>
             </div>
           </Reveal>
         ))}

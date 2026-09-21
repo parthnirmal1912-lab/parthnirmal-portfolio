@@ -344,7 +344,6 @@ export type Education = {
   division: string;
   logo?: string;
   degree: string;
-  gpa: string;
   date: string;
   location: string;
   current?: boolean;
@@ -357,7 +356,6 @@ export const education: Education[] = [
     logo: "/logos/purdue.png",
     division: "Daniels School of Business",
     degree: "Master of Science, Business Analytics and Information Management",
-    gpa: "3.5 / 4.0",
     date: "December 2026",
     location: "West Lafayette, IN",
     current: true,
@@ -368,7 +366,6 @@ export const education: Education[] = [
     logo: "/logos/frcrce.png",
     division: "University of Mumbai",
     degree: "Bachelor of Engineering, Electronics",
-    gpa: "3.2 / 4.0",
     date: "May 2022",
     location: "Mumbai, Maharashtra",
   },
