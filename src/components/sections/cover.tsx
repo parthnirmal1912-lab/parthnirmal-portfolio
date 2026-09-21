@@ -110,24 +110,24 @@ export function Cover() {
               </div>
 
               <div className="flex justify-center border-b border-rule px-4 py-6">
-                <div className="relative aspect-[2/3] w-56 overflow-hidden border border-rule bg-paper-deep sm:w-64">
+                <div className="relative aspect-[2/3] w-36 overflow-hidden border border-rule bg-paper-deep sm:w-44">
                   <Image
                     src="/avatar.jpg"
                     alt={profile.name}
                     fill
                     priority
-                    sizes="256px"
+                    sizes="176px"
                     className="object-cover object-center"
                   />
                   <div
                     aria-hidden
                     className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-ink via-ink/55 to-transparent"
                   />
-                  <div className="absolute inset-x-0 bottom-0 p-3">
-                    <p className="display text-sm leading-tight text-paper">
+                  <div className="absolute inset-x-0 bottom-0 p-2">
+                    <p className="display text-xs leading-tight text-paper">
                       {profile.shortName}
                     </p>
-                    <p className="mt-1.5 font-mono text-[8px] uppercase leading-tight tracking-label text-rust-glow">
+                    <p className="mt-1 font-mono text-[7px] uppercase leading-tight tracking-label text-rust-glow">
                       {profile.role}
                     </p>
                   </div>
