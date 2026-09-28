@@ -64,18 +64,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F3EFE7" },
-    { media: "(prefers-color-scheme: dark)", color: "#14120F" },
-  ],
-  colorScheme: "light dark",
+  themeColor: "#F3EFE7",
+  colorScheme: "light",
 };
 
 /**
- * Runs before first paint so the page never flashes the wrong theme:
- * a stored choice wins, otherwise follow the OS setting.
+ * Runs before first paint so the page never flashes the wrong theme.
+ * Light is the default for everyone; dark only if the visitor chose it.
  */
-const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;if(d)r.classList.add("dark");r.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
+const themeScript = `(function(){try{if(localStorage.getItem("theme")==="dark"){var r=document.documentElement;r.classList.add("dark");r.style.colorScheme="dark";}}catch(e){}})();`;
 
 export default function RootLayout({
   children,

@@ -14,15 +14,6 @@ function applyTheme(theme: Theme) {
   root.style.colorScheme = theme;
 }
 
-function readStored(): Theme | null {
-  try {
-    const v = localStorage.getItem(STORAGE_KEY);
-    return v === "dark" || v === "light" ? v : null;
-  } catch {
-    return null;
-  }
-}
-
 /** The `dark` class on <html> is the single source of truth. */
 function subscribe(onChange: () => void) {
   const observer = new MutationObserver(onChange);
@@ -30,18 +21,7 @@ function subscribe(onChange: () => void) {
     attributes: true,
     attributeFilter: ["class"],
   });
-
-  // Follow the OS setting until the visitor makes an explicit choice.
-  const media = window.matchMedia("(prefers-color-scheme: dark)");
-  const onSystem = (e: MediaQueryListEvent) => {
-    if (!readStored()) applyTheme(e.matches ? "dark" : "light");
-  };
-  media.addEventListener("change", onSystem);
-
-  return () => {
-    observer.disconnect();
-    media.removeEventListener("change", onSystem);
-  };
+  return () => observer.disconnect();
 }
 
 const getSnapshot = (): Theme =>
@@ -49,8 +29,8 @@ const getSnapshot = (): Theme =>
 const getServerSnapshot = (): Theme | null => null;
 
 /**
- * Light / dark switch. The initial theme is applied before paint by the
- * inline script in layout.tsx (stored choice, else the OS preference).
+ * Light / dark switch. The site opens in light; the inline script in
+ * layout.tsx applies dark before paint only if the visitor chose it.
  */
 export function ThemeToggle({ className }: { className?: string }) {
   const theme = React.useSyncExternalStore(
