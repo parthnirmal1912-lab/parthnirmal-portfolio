@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/content";
+import { projects, siteUrl } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,5 +9,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
     },
+    ...projects
+      .filter((p) => p.href && p.caseStudy)
+      .map((p) => ({
+        url: `${siteUrl}${p.href}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+      })),
   ];
 }

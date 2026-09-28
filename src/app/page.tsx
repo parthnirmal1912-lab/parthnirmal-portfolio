@@ -15,7 +15,7 @@ const personSchema = {
   email: `mailto:${profile.email}`,
   telephone: profile.phone,
   url: siteUrl,
-  jobTitle: "Strategy & Analytics Consultant (Industry Practicum)",
+  jobTitle: "Graduate Data Science Researcher",
   description: profile.standfirst,
   address: { "@type": "PostalAddress", addressRegion: "Indiana", addressCountry: "US" },
   sameAs: [profile.linkedin],

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
 import { ArrowDownToLine, Menu, Search, X } from "lucide-react";
 import { profile, sections } from "@/lib/content";
 import { useActiveSection, useScrollProgress } from "@/lib/use-active-section";
@@ -60,7 +61,7 @@ export function TopBar() {
     <>
       <header className="no-print fixed inset-x-0 top-0 z-50 border-b border-ink bg-paper/95 backdrop-blur-[2px]">
         <div className="flex h-14 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="group flex items-baseline gap-2.5">
+          <Link href="/#top" className="group flex items-baseline gap-2.5">
             <span className="display text-[15px] leading-none">
               {profile.lastName}
               <span className="text-rust">,</span> {profile.firstName}
@@ -68,13 +69,13 @@ export function TopBar() {
             <span className="hidden font-mono text-[10px] uppercase tracking-label text-ink-faint sm:inline">
               / Purdue BAIM &rsquo;26
             </span>
-          </a>
+          </Link>
 
           <nav className="hidden items-center gap-1 md:flex">
             {sections.slice(1).map((s) => (
               <a
                 key={s.id}
-                href={`#${s.id}`}
+                href={`/#${s.id}`}
                 aria-label={s.label}
                 className={cn(
                   "group flex items-center gap-1.5 px-2 py-1.5 font-mono text-[10px] uppercase tracking-label transition-colors",
@@ -125,7 +126,7 @@ export function TopBar() {
                     {filteredSections.map((s) => (
                       <li key={s.id}>
                         <a
-                          href={`#${s.id}`}
+                          href={`/#${s.id}`}
                           onClick={closeSearch}
                           className="flex items-baseline gap-3 border-b border-rule px-3 py-2.5 font-mono text-[11px] uppercase tracking-label text-ink-soft transition-colors last:border-b-0 hover:bg-paper-deep hover:text-rust"
                         >
@@ -139,12 +140,12 @@ export function TopBar() {
               )}
             </div>
 
-            <a
-              href="#contact"
+            <Link
+              href="/#contact"
               className="hidden items-center gap-1.5 border border-ink px-3 py-2 font-mono text-[10px] uppercase tracking-label text-ink transition-colors hover:bg-ink hover:text-paper sm:inline-flex"
             >
               Contact
-            </a>
+            </Link>
 
             <a
               href={profile.resumeUrl}
@@ -197,7 +198,7 @@ export function TopBar() {
           {sections.map((s) => (
             <a
               key={s.id}
-              href={`#${s.id}`}
+              href={`/#${s.id}`}
               onClick={() => setOpen(false)}
               className="group flex items-baseline gap-4 border-b border-rule px-4 py-5 transition-colors hover:bg-paper-deep"
             >

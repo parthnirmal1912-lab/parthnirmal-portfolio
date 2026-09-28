@@ -9,7 +9,7 @@ export function Experience() {
       <SectionHead
         index="03"
         title="Experience"
-        kicker="Three roles / two sectors"
+        kicker="Four roles / consulting to research"
       />
 
       <div className="space-y-0">
@@ -47,6 +47,28 @@ export function Experience() {
                 <h3 className="mt-3 display text-[clamp(1.5rem,3.4vw,2.25rem)]">
                   {job.org}
                 </h3>
+
+                {job.partner && (
+                  <div className="mt-2.5 flex flex-wrap items-center gap-2.5">
+                    <span className="font-mono text-[10.5px] uppercase tracking-label text-ink-soft">
+                      Corporate partner &mdash;
+                    </span>
+                    {job.partnerLogo ? (
+                      <span className="inline-flex h-7 items-center border border-rule bg-paper-card px-2.5">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={job.partnerLogo}
+                          alt={job.partner}
+                          className="h-3 w-auto"
+                        />
+                      </span>
+                    ) : (
+                      <span className="font-mono text-[10.5px] uppercase tracking-label text-ink">
+                        {job.partner}
+                      </span>
+                    )}
+                  </div>
+                )}
 
                 {job.client && (
                   <p className="mt-1.5 font-mono text-[10.5px] uppercase tracking-label text-ink-soft">

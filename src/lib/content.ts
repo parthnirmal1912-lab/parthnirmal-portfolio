@@ -120,6 +120,9 @@ export type Experience = {
   org: string;
   client?: string;
   logo?: string;
+  /** Corporate partner of an academic project — shown distinctly from an employer or client. */
+  partner?: string;
+  partnerLogo?: string;
   title: string;
   period: string;
   start: string;
@@ -132,6 +135,40 @@ export type Experience = {
 };
 
 export const experience: Experience[] = [
+  {
+    id: "datamine-jnj",
+    org: "The Data Mine, Purdue University",
+    logo: "/logos/purdue.png",
+    partner: "Johnson & Johnson",
+    partnerLogo: "/logos/johnson-johnson.svg",
+    title: "Graduate Data Science Researcher",
+    period: "August 2026 — Present",
+    start: "Aug 2026",
+    end: "Present",
+    location: "West Lafayette, Indiana",
+    current: true,
+    summary:
+      "Contributing to QSTEPS AI-Enablement, a Purdue Data Mine project with Johnson & Johnson as corporate partner, where I'm helping define and plan improvements to a manual scheduling and coordination workflow as part of the Package Generation team.",
+    bullets: [
+      {
+        lead: "Collaborating with Johnson & Johnson mentors",
+        rest: "on the QSTEPS AI-Enablement project as part of the Package Generation team, focused on improving a manual scheduling and coordination workflow.",
+      },
+      {
+        lead: "Authored PRD sections",
+        rest: "defining the problem statement, primary user, project scope, and success metrics, giving the team a shared definition of what the project should solve.",
+      },
+      {
+        lead: "Developed TSD sections",
+        rest: "covering phased implementation, data and systems touched, and error handling and fallback procedures.",
+      },
+      {
+        lead: "Working in GitHub and Jupyter Notebook",
+        rest: "to collaborate on project work with the team.",
+      },
+    ],
+    tags: ["PRD", "TSD", "Scope Definition", "Success Metrics", "GitHub"],
+  },
   {
     id: "kearney",
     org: "Kearney",
@@ -249,12 +286,144 @@ export type Project = {
   bullets: string[];
   stack: string[];
   accolade?: string;
+  /** e.g. "In progress" — rendered as a stamp on the card and project page. */
+  status?: string;
+  /** Link to a dedicated project page, when one exists. */
+  href?: string;
+  caseStudy?: CaseStudy;
+};
+
+export type CaseStudy = {
+  /** Short labelled facts for the project page header. */
+  facts: { label: string; value: string }[];
+  /** Clarifies the relationship with a corporate partner. */
+  partnerNote?: string;
+  overview: string[];
+  problem: string[];
+  /** The open questions the problem framing has to answer. */
+  problemQuestions?: string[];
+  role: string[];
+  contributions: {
+    id: string;
+    label: string;
+    title: string;
+    purpose: string;
+    items: { lead: string; rest: string }[];
+  }[];
+  teamwork?: string;
+  tools: { name: string; use: string }[];
+  statusNote: string;
 };
 
 export const projects: Project[] = [
   {
-    id: "feedbacklens",
+    id: "qsteps-ai-enablement",
     index: "01",
+    title: "QSTEPS AI-Enablement",
+    subtitle:
+      "The Data Mine, Purdue University · Corporate partner: Johnson & Johnson",
+    kind: "Data Mine Project",
+    period: "August 2026 — Present",
+    location: "West Lafayette, Indiana",
+    status: "In progress",
+    href: "/projects/qsteps-ai-enablement",
+    blurb:
+      "An ongoing Purdue Data Mine team project, with Johnson & Johnson as corporate partner, focused on improving a scheduling and coordination workflow that is handled manually today. On the Package Generation team, my work so far has centred on defining the problem and specifying how a solution would be built.",
+    bullets: [
+      "PRD: wrote the problem statement, primary-user definition, project scope, and success metrics.",
+      "TSD: wrote the sections covering implementation by phase, data and systems touched, and error handling and fallback.",
+      "Working as part of the Package Generation team, using GitHub and Jupyter Notebook during the project.",
+    ],
+    stack: ["GitHub", "Jupyter Notebook"],
+    caseStudy: {
+      facts: [
+        { label: "Organization", value: "The Data Mine, Purdue University" },
+        { label: "Corporate partner", value: "Johnson & Johnson" },
+        { label: "Team", value: "Package Generation" },
+        { label: "Role", value: "Graduate Data Science Researcher" },
+        { label: "Dates", value: "August 2026 — Present" },
+        { label: "Tools", value: "GitHub, Jupyter Notebook" },
+      ],
+      partnerNote:
+        "Johnson & Johnson is the corporate partner for this Purdue Data Mine project. I contribute as a Purdue graduate researcher and am not employed by Johnson & Johnson.",
+      overview: [
+        "QSTEPS AI-Enablement is a team project run through The Data Mine at Purdue University, with Johnson & Johnson as the corporate partner and J&J mentors guiding the work.",
+        "The project is focused on improving a scheduling and coordination workflow that is currently carried out manually. The work is organized across teams, and I'm part of the Package Generation team.",
+        "The project is ongoing. This page covers my contributions to date and will grow as the work develops.",
+      ],
+      problem: [
+        "At the centre of the project is a scheduling and coordination workflow that is handled manually today.",
+        "Before anything gets built, the team needs a clear, shared answer to a few basic questions. Getting those right early is what keeps the rest of the work pointed at the real problem — and that is exactly what the PRD is for.",
+      ],
+      problemQuestions: [
+        "What exactly is the problem with the current workflow?",
+        "Who is the primary user we are solving for?",
+        "What is in scope — and what is deliberately out of scope?",
+        "How will we know the workflow has actually improved?",
+      ],
+      role: [
+        "I'm a Graduate Data Science Researcher on the Package Generation team.",
+        "My focus has been the documentation that defines and plans the work — the Product Requirements Document (PRD) and the Technical Specification Document (TSD) — alongside day-to-day collaboration with my team in GitHub and Jupyter Notebook.",
+      ],
+      contributions: [
+        {
+          id: "prd",
+          label: "PRD",
+          title: "Product Requirements Document",
+          purpose: "What to solve, and for whom.",
+          items: [
+            {
+              lead: "Problem statement",
+              rest: "— what is not working in the current manual workflow, stated plainly enough for the whole team to align on.",
+            },
+            {
+              lead: "Primary-user definition",
+              rest: "— who the solution is for, so decisions can be checked against a real person's needs.",
+            },
+            {
+              lead: "Project scope",
+              rest: "— what the project covers and what it deliberately leaves out.",
+            },
+            {
+              lead: "Success metrics",
+              rest: "— how the team will judge whether the workflow has improved.",
+            },
+          ],
+        },
+        {
+          id: "tsd",
+          label: "TSD",
+          title: "Technical Specification Document",
+          purpose: "How it would be built, and what happens when things go wrong.",
+          items: [
+            {
+              lead: "Implementation by phase",
+              rest: "— how the work is broken into stages that can be delivered one at a time.",
+            },
+            {
+              lead: "Data and systems touched",
+              rest: "— which data and systems the solution would need to interact with.",
+            },
+            {
+              lead: "Error handling and fallback",
+              rest: "— what should happen when a step fails, so the workflow can keep moving.",
+            },
+          ],
+        },
+      ],
+      teamwork:
+        "All of this happens as part of the Package Generation team, working alongside teammates and J&J mentors rather than in isolation.",
+      tools: [
+        { name: "GitHub", use: "Collaborating with the team on project work." },
+        { name: "Jupyter Notebook", use: "Used for project work during the engagement." },
+      ],
+      statusNote:
+        "Work in progress. This page will be updated as the project develops.",
+    },
+  },
+  {
+    id: "feedbacklens",
+    index: "02",
     title: "FeedbackLens",
     subtitle: "Sentiment + Theme Analytics Dashboard",
     kind: "Personal Project",
@@ -277,7 +446,7 @@ export const projects: Project[] = [
   },
   {
     id: "bankruptcy",
-    index: "02",
+    index: "03",
     title: "Bankruptcy Prediction",
     subtitle: "Kaggle Competition — Data Mining, Purdue University",
     kind: "Academic Project",
@@ -300,7 +469,14 @@ export const skillGroups = [
     number: "A",
     title: "Product & Delivery",
     skills: [
-      "Agile Methodology",
+      "Product Requirements (PRD, BRD, FRD)",
+      "User Stories",
+      "Agile / Scrum",
+      "Sprint Planning",
+      "Backlog Management",
+      "Roadmap Prioritization",
+      "Risk & Dependency Management",
+      "Success Metrics / KPIs",
       "Requirements Gathering",
       "Business Problem Framing",
       "Structured Problem Solving",
@@ -315,7 +491,12 @@ export const skillGroups = [
     skills: [
       "Data Analysis",
       "Financial Modeling",
+      "Predictive Modeling",
+      "Statistical Analysis",
       "ROI Quantification",
+      "Data Visualization",
+      "Gap Analysis",
+      "Root Cause Analysis",
       "Data Validation & Cleaning",
       "Excel Modeling",
     ],
@@ -324,16 +505,30 @@ export const skillGroups = [
     id: "tools",
     number: "C",
     title: "Tools & Languages",
-    skills: ["SQL", "Python", "Tableau", "Power BI", "Excel"],
+    skills: [
+      "SQL",
+      "Python",
+      "Excel",
+      "Tableau",
+      "Power BI",
+      "Databricks",
+      "GitHub",
+      "Jupyter Notebook",
+      "Salesforce",
+      "AWS",
+      "Jira",
+      "LightGBM",
+      "Cloudflare Workers (D1, KV, Workers AI)",
+    ],
   },
   {
     id: "communication",
     number: "D",
     title: "Communication",
     skills: [
-      "Stakeholder Communication",
+      "Stakeholder Management",
       "Executive Reporting",
-      "Cross-functional Collaboration",
+      "Cross-Functional Leadership",
     ],
   },
 ] as const;

@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { sections } from "@/lib/content";
 import { useActiveSection } from "@/lib/use-active-section";
 import { cn } from "@/lib/utils";
@@ -12,6 +13,10 @@ const sectionIds = sections.map((s) => s.id);
  */
 export function IndexRail() {
   const active = useActiveSection(sectionIds);
+  const pathname = usePathname();
+
+  // The rail indexes the home page's sections; it has nothing to point at elsewhere.
+  if (pathname !== "/") return null;
 
   return (
     <aside className="no-print fixed left-0 top-1/2 z-40 hidden -translate-y-1/2 xl:block">

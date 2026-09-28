@@ -1,4 +1,5 @@
-import { Award, CalendarDays } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Award, CalendarDays } from "lucide-react";
 import { Section, SectionHead } from "@/components/section";
 import { Reveal } from "@/components/reveal";
 import { projects } from "@/lib/content";
@@ -6,7 +7,7 @@ import { projects } from "@/lib/content";
 export function Projects() {
   return (
     <Section id="projects" tone="deep">
-      <SectionHead index="04" title="Projects" kicker="Built, shipped, ranked" />
+      <SectionHead index="04" title="Projects" kicker="Built, shipped, ranked, in progress" />
 
       <div className="space-y-10 lg:space-y-14">
         {projects.map((p, i) => (
@@ -39,6 +40,13 @@ export function Projects() {
                     </div>
                   </div>
 
+                  {p.status && (
+                    <p className="stamp mt-5">
+                      <span className="mr-1.5 size-1 animate-pulse bg-rust" />
+                      {p.status}
+                    </p>
+                  )}
+
                   {p.accolade && (
                     <p className="mt-5 inline-flex items-center gap-2 bg-rust px-3 py-1.5 font-mono text-[10px] uppercase tracking-label text-paper">
                       <Award className="size-3" />
@@ -63,6 +71,16 @@ export function Projects() {
                       ))}
                     </div>
                   </div>
+
+                  {p.href && (
+                    <Link
+                      href={p.href}
+                      className="mt-7 inline-flex w-fit items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-[11px] uppercase tracking-label text-paper transition-colors hover:border-rust hover:bg-rust"
+                    >
+                      Read the project page
+                      <ArrowUpRight className="size-3.5" />
+                    </Link>
+                  )}
                 </div>
 
                 <div className="lg:col-span-7">
