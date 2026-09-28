@@ -15,7 +15,7 @@ export function Capabilities() {
       <SectionHead
         index="05"
         title="Capabilities"
-        kicker="Four groups / thirty-nine skills"
+        kicker="Four groups / forty-two skills"
       />
 
       <div className="grid gap-8 border-t border-ink lg:grid-cols-12 lg:gap-12">

@@ -123,6 +123,8 @@ export type Experience = {
   /** Corporate partner of an academic project — shown distinctly from an employer or client. */
   partner?: string;
   partnerLogo?: string;
+  /** Call-to-action shown under the bullets, e.g. a link to a project page. */
+  link?: { href: string; label: string };
   title: string;
   period: string;
   start: string;
@@ -168,6 +170,10 @@ export const experience: Experience[] = [
       },
     ],
     tags: ["PRD", "TSD", "Scope Definition", "Success Metrics", "GitHub"],
+    link: {
+      href: "/projects/qsteps-ai-enablement",
+      label: "Explore the QSTEPS project",
+    },
   },
   {
     id: "kearney",
@@ -290,6 +296,8 @@ export type Project = {
   status?: string;
   /** Link to a dedicated project page, when one exists. */
   href?: string;
+  /** false keeps a project out of the Projects section (it can still have a page). */
+  listed?: boolean;
   caseStudy?: CaseStudy;
 };
 
@@ -313,12 +321,16 @@ export type CaseStudy = {
   teamwork?: string;
   tools: { name: string; use: string }[];
   statusNote: string;
+  /** Where the page's back links go; defaults to the Projects section. */
+  back?: { href: string; label: string };
 };
 
 export const projects: Project[] = [
   {
     id: "qsteps-ai-enablement",
-    index: "01",
+    index: "",
+    // Lives under Experience (The Data Mine) rather than in Projects.
+    listed: false,
     title: "QSTEPS AI-Enablement",
     subtitle:
       "The Data Mine, Purdue University · Corporate partner: Johnson & Johnson",
@@ -419,11 +431,12 @@ export const projects: Project[] = [
       ],
       statusNote:
         "Work in progress. This page will be updated as the project develops.",
+      back: { href: "/#experience", label: "Back to experience" },
     },
   },
   {
     id: "feedbacklens",
-    index: "02",
+    index: "01",
     title: "FeedbackLens",
     subtitle: "Sentiment + Theme Analytics Dashboard",
     kind: "Personal Project",
@@ -446,7 +459,7 @@ export const projects: Project[] = [
   },
   {
     id: "bankruptcy",
-    index: "03",
+    index: "02",
     title: "Bankruptcy Prediction",
     subtitle: "Kaggle Competition — Data Mining, Purdue University",
     kind: "Academic Project",
@@ -529,6 +542,9 @@ export const skillGroups = [
       "Stakeholder Management",
       "Executive Reporting",
       "Cross-Functional Leadership",
+      "Client Communication",
+      "Technical Documentation",
+      "Data Storytelling",
     ],
   },
 ] as const;

@@ -1,4 +1,5 @@
-import { MapPin } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { Section, SectionHead } from "@/components/section";
 import { Reveal } from "@/components/reveal";
 import { experience } from "@/lib/content";
@@ -34,7 +35,7 @@ export function Experience() {
                 </div>
 
                 {job.logo && (
-                  <div className="relative mt-3 h-9 w-28 border border-rule bg-paper-card">
+                  <div className="logo-plate relative mt-3 h-9 w-28 border border-rule">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={job.logo}
@@ -54,7 +55,7 @@ export function Experience() {
                       Corporate partner &mdash;
                     </span>
                     {job.partnerLogo ? (
-                      <span className="inline-flex h-7 items-center border border-rule bg-paper-card px-2.5">
+                      <span className="logo-plate inline-flex h-7 items-center border border-rule px-2.5">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={job.partnerLogo}
@@ -124,6 +125,18 @@ export function Experience() {
                   </Reveal>
                 ))}
               </ul>
+
+              {job.link && (
+                <Reveal delay={140 + job.bullets.length * 70}>
+                  <Link
+                    href={job.link.href}
+                    className="mt-8 inline-flex w-fit items-center gap-2 border border-ink bg-ink px-5 py-3 font-mono text-[11px] uppercase tracking-label text-paper transition-colors hover:border-rust hover:bg-rust"
+                  >
+                    {job.link.label}
+                    <ArrowUpRight className="size-3.5" />
+                  </Link>
+                </Reveal>
+              )}
             </div>
           </article>
         ))}

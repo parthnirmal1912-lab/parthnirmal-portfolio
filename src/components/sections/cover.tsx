@@ -111,7 +111,11 @@ export function Cover() {
               </div>
 
               <div className="flex justify-center border-b border-rule px-4 py-6">
-                <div className="relative aspect-[2/3] w-36 overflow-hidden border border-rule bg-paper-deep sm:w-44">
+                {/* data-tone="ink" keeps the dark gradient + light caption in both themes. */}
+                <div
+                  data-tone="ink"
+                  className="relative aspect-[2/3] w-36 overflow-hidden border border-rule bg-paper-deep sm:w-44"
+                >
                   <Image
                     src="/avatar.jpg"
                     alt={profile.name}

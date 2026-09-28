@@ -44,6 +44,7 @@ export default async function ProjectPage({
   const project = getProject(slug);
   if (!project || !project.caseStudy) notFound();
   const cs = project.caseStudy;
+  const back = cs.back ?? { href: "/#projects", label: "All projects" };
 
   // Show the partner's logo alongside the partner note when the matching
   // experience entry has one.
@@ -57,11 +58,11 @@ export default async function ProjectPage({
       <Section id="project" noTopBorder>
         <Reveal>
           <Link
-            href="/#projects"
+            href={back.href}
             className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-label text-ink-soft transition-colors hover:text-rust"
           >
             <ArrowLeft className="size-3" />
-            All projects
+            {back.label}
           </Link>
         </Reveal>
 
@@ -81,9 +82,11 @@ export default async function ProjectPage({
           <div className="lg:col-span-7">
             <Reveal delay={100}>
               <div className="flex items-start gap-4 sm:gap-6">
-                <span className="display text-[clamp(3rem,7vw,5.5rem)] leading-none text-rust/25">
-                  {project.index}
-                </span>
+                {project.listed !== false && project.index && (
+                  <span className="display text-[clamp(3rem,7vw,5.5rem)] leading-none text-rust/25">
+                    {project.index}
+                  </span>
+                )}
                 <div className="pt-1">
                   <h1 className="display text-[clamp(2.25rem,6vw,4.75rem)]">
                     {project.title}
@@ -275,11 +278,11 @@ export default async function ProjectPage({
           </Reveal>
           <Reveal delay={80}>
             <Link
-              href="/#projects"
+              href={back.href}
               className="inline-flex w-fit items-center gap-2 border border-paper px-5 py-3 font-mono text-[11px] uppercase tracking-label text-paper transition-colors hover:border-rust hover:bg-rust"
             >
               <ArrowLeft className="size-3.5" />
-              Back to all projects
+              {back.label}
             </Link>
           </Reveal>
         </div>

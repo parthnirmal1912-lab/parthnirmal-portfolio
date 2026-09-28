@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { ArrowDownToLine, Menu, Search, X } from "lucide-react";
 import { profile, sections } from "@/lib/content";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { useActiveSection, useScrollProgress } from "@/lib/use-active-section";
 import { cn } from "@/lib/utils";
 
@@ -91,6 +92,7 @@ export function TopBar() {
           </nav>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <div ref={searchRef} className="relative">
               <button
                 type="button"

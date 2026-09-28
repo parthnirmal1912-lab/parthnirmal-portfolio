@@ -64,9 +64,18 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F3EFE7",
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F3EFE7" },
+    { media: "(prefers-color-scheme: dark)", color: "#14120F" },
+  ],
+  colorScheme: "light dark",
 };
+
+/**
+ * Runs before first paint so the page never flashes the wrong theme:
+ * a stored choice wins, otherwise follow the OS setting.
+ */
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");var d=t?t==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;var r=document.documentElement;if(d)r.classList.add("dark");r.style.colorScheme=d?"dark":"light";}catch(e){}})();`;
 
 export default function RootLayout({
   children,
@@ -74,7 +83,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body
         className={`${display.variable} ${sans.variable} ${mono.variable} paper-grain antialiased`}
       >

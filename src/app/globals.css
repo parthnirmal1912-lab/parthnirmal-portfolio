@@ -3,6 +3,55 @@
 @tailwind utilities;
 
 @layer base {
+  /* ---- Theme tokens (RGB channels, consumed by tailwind.config.ts) ---- */
+  :root {
+    --paper: 243 239 231; /* #F3EFE7 warm bone */
+    --paper-deep: 233 227 215; /* #E9E3D7 */
+    --paper-card: 251 249 244; /* #FBF9F4 */
+    --ink: 21 18 14; /* #15120E */
+    --ink-soft: 76 70 60; /* #4C463C */
+    --ink-faint: 110 102 86; /* #6E6656 */
+    --rule: 214 206 191; /* #D6CEBF */
+    --rust: 190 66 24; /* #BE4218 */
+    --rust-deep: 143 50 17; /* #8F3211 */
+    --rust-glow: 232 104 60; /* #E8683C */
+    --rust-tint: 240 217 206; /* #F0D9CE */
+    --moss: 46 59 44;
+    --moss-tint: 221 226 214;
+    --scrollbar-thumb: 185 174 155;
+    color-scheme: light;
+  }
+
+  /* Dark edition: charcoal paper, bone ink, a brighter rust for contrast. */
+  html.dark {
+    --paper: 20 18 15; /* #14120F */
+    --paper-deep: 27 25 21; /* #1B1915 */
+    --paper-card: 33 30 26; /* #211E1A */
+    --ink: 237 231 220; /* #EDE7DC */
+    --ink-soft: 192 184 170; /* #C0B8AA */
+    --ink-faint: 150 142 128; /* #968E80 */
+    --rule: 58 53 46; /* #3A352E */
+    --rust: 234 110 66; /* #EA6E42 */
+    --rust-deep: 190 66 24;
+    --rust-glow: 242 140 102; /* #F28C66 */
+    --rust-tint: 64 36 25;
+    --moss: 196 212 190;
+    --moss-tint: 38 46 36;
+    --scrollbar-thumb: 80 73 63;
+    color-scheme: dark;
+  }
+
+  /* Big "ink" feature sections (Impact, Contact, status bands) stay dark in
+     the dark edition rather than flipping to a bright block: restore the
+     light-theme pairing inside them, on a slightly lifted charcoal. */
+  html.dark [data-tone="ink"] {
+    --ink: 11 10 8; /* #0B0A08 */
+    --paper: 237 231 220;
+    --paper-deep: 225 218 205;
+    --ink-soft: 60 55 48;
+    --rule: 58 53 46;
+  }
+
   * {
     @apply border-rule;
   }
@@ -27,7 +76,7 @@
   a:focus-visible,
   button:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #be4218;
+    outline: 2px solid rgb(var(--rust));
     outline-offset: 2px;
   }
 
@@ -37,14 +86,14 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: #e9e3d7;
+    background: rgb(var(--paper-deep));
   }
   ::-webkit-scrollbar-thumb {
-    background: #b9ae9b;
-    border: 3px solid #e9e3d7;
+    background: rgb(var(--scrollbar-thumb));
+    border: 3px solid rgb(var(--paper-deep));
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #be4218;
+    background: rgb(var(--rust));
   }
 }
 
@@ -77,12 +126,23 @@
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   }
+  /* Multiply vanishes on charcoal; a soft-light grain keeps the texture. */
+  html.dark .paper-grain::before {
+    mix-blend-mode: soft-light;
+    opacity: 0.22;
+  }
+
+  /* Logos are drawn for light backgrounds, so their plate stays light in
+     both themes. */
+  .logo-plate {
+    background-color: #fbf9f4;
+  }
 
   /* ---- Ruled notebook / ledger backdrop ---- */
   .ledger-lines {
     background-image: linear-gradient(
       to bottom,
-      rgba(21, 18, 14, 0.055) 1px,
+      rgb(var(--ink) / 0.055) 1px,
       transparent 1px
     );
     background-size: 100% 34px;
@@ -91,7 +151,7 @@
   .column-rules {
     background-image: linear-gradient(
       to right,
-      rgba(21, 18, 14, 0.05) 1px,
+      rgb(var(--ink) / 0.05) 1px,
       transparent 1px
     );
     background-size: 25% 100%;
@@ -100,7 +160,7 @@
   /* ---- Hard-edged print block, the anti-glass card ---- */
   .print-block {
     @apply border border-ink bg-paper-card;
-    box-shadow: 6px 6px 0 0 rgba(21, 18, 14, 0.9);
+    box-shadow: 6px 6px 0 0 rgb(var(--ink) / 0.9);
   }
 
   .print-block-soft {
@@ -173,8 +233,8 @@
   .hatch {
     background-image: repeating-linear-gradient(
       45deg,
-      rgba(190, 66, 24, 0.16) 0,
-      rgba(190, 66, 24, 0.16) 1px,
+      rgb(var(--rust) / 0.16) 0,
+      rgb(var(--rust) / 0.16) 1px,
       transparent 1px,
       transparent 7px
     );
@@ -183,8 +243,8 @@
   .hatch-ink {
     background-image: repeating-linear-gradient(
       45deg,
-      rgba(21, 18, 14, 0.13) 0,
-      rgba(21, 18, 14, 0.13) 1px,
+      rgb(var(--ink) / 0.13) 0,
+      rgb(var(--ink) / 0.13) 1px,
       transparent 1px,
       transparent 7px
     );

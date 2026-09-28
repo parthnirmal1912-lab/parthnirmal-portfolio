@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
@@ -10,27 +11,30 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
+        // Every colour is an RGB-channel CSS variable (see globals.css) so the
+        // light and dark themes share one set of class names, and opacity
+        // modifiers like `text-paper/60` keep working.
         paper: {
-          DEFAULT: "#F3EFE7",
-          deep: "#E9E3D7",
-          card: "#FBF9F4",
+          DEFAULT: "rgb(var(--paper) / <alpha-value>)",
+          deep: "rgb(var(--paper-deep) / <alpha-value>)",
+          card: "rgb(var(--paper-card) / <alpha-value>)",
         },
         ink: {
-          DEFAULT: "#15120E",
-          soft: "#4C463C",
-          faint: "#6E6656",
+          DEFAULT: "rgb(var(--ink) / <alpha-value>)",
+          soft: "rgb(var(--ink-soft) / <alpha-value>)",
+          faint: "rgb(var(--ink-faint) / <alpha-value>)",
         },
-        rule: "#D6CEBF",
+        rule: "rgb(var(--rule) / <alpha-value>)",
         rust: {
-          DEFAULT: "#BE4218",
-          deep: "#8F3211",
+          DEFAULT: "rgb(var(--rust) / <alpha-value>)",
+          deep: "rgb(var(--rust-deep) / <alpha-value>)",
           /** Legible accent for use on the ink-coloured panels. */
-          glow: "#E8683C",
-          tint: "#F0D9CE",
+          glow: "rgb(var(--rust-glow) / <alpha-value>)",
+          tint: "rgb(var(--rust-tint) / <alpha-value>)",
         },
         moss: {
-          DEFAULT: "#2E3B2C",
-          tint: "#DDE2D6",
+          DEFAULT: "rgb(var(--moss) / <alpha-value>)",
+          tint: "rgb(var(--moss-tint) / <alpha-value>)",
         },
       },
       borderRadius: {

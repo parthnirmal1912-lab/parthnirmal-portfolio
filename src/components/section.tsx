@@ -23,6 +23,7 @@ export function Section({
   return (
     <section
       id={id}
+      data-tone={tone}
       className={cn(
         "relative",
         !noTopBorder && "border-t border-ink",

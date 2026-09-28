@@ -7,10 +7,12 @@ import { projects } from "@/lib/content";
 export function Projects() {
   return (
     <Section id="projects" tone="deep">
-      <SectionHead index="04" title="Projects" kicker="Built, shipped, ranked, in progress" />
+      <SectionHead index="04" title="Projects" kicker="Built, shipped, ranked" />
 
       <div className="space-y-10 lg:space-y-14">
-        {projects.map((p, i) => (
+        {projects
+          .filter((p) => p.listed !== false)
+          .map((p, i) => (
           <Reveal key={p.id} delay={i * 100}>
             <article className="print-block">
               {/* Plate header */}
